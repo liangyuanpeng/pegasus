@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 ---
-name: BuildCompilationEnvDocker - build and publish multi compilation OS env
+name: Build pegasus
 
 on:
   push:
@@ -28,15 +28,6 @@ on:
 jobs:
   build_images:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        dockertag:
-          - ubuntu1604
-          - ubuntu1804
-          - ubuntu2004
-          - centos6
-          - centos7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
