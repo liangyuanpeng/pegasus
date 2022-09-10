@@ -42,4 +42,7 @@ jobs:
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build
         run: |
-          docker run -v $PWD:/root/apache  apache/pegasus:build-env-centos7 /bin/bash -c "./run.sh build -c"
+          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh build -c"
+          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
+          ./build_docker.sh $PWD
+          docker images
