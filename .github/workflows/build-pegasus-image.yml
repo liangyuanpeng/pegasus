@@ -45,8 +45,7 @@ jobs:
           docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh build -c"
           docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
           ./docker/pegasus-docker-compose/build_docker.sh $PWD
+          docker tag pegasus:latest lypgcs/pegasus:master
           docker images
-          docker login -u${{ secrets.DOCKERHUB_USER }} -p${{ secrets.DOCKERHUB_TOKEN }}
-          docker tag pegasus:latest lypgcs:master
-          docker push lypgcs:master
+          docker push lypgcs/pegasus:master
           docker logout
