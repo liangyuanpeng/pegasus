@@ -91,6 +91,12 @@ jobs:
         run: ./run.sh build --test --compiler $COMPILER --skip_thirdparty -j $(nproc)
       - name: Packaging Server
         run: ./run.sh pack_server
+      - name: Build docker image 
+        if: ${{ matrix.os == 'ubuntu2004' }}
+        run: docker/pegasus-docker-compose/build_docker.sh .
+      - name: check image 
+        if: ${{ matrix.os == 'ubuntu2004' }}
+        run: docker images
 
   lint_go:
     name: Lint Golang
