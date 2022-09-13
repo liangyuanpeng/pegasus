@@ -92,10 +92,10 @@ jobs:
       - name: Packaging Server
         run: ./run.sh pack_server
       - name: Build docker image 
-        if: ${{ matrix.os == 'ubuntu2004' }}
+        if: matrix.os == 'ubuntu2004' && matrix.compiler-family == 'clang'
         run: docker/pegasus-docker-compose/build_docker.sh .
       - name: check image 
-        if: ${{ matrix.os == 'ubuntu2004' }}
+        if: matrix.os == 'ubuntu2004' && matrix.compiler-family == 'clang'
         run: docker images
 
   lint_go:
