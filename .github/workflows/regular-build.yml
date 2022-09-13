@@ -19,8 +19,8 @@ name: Lint and build regularly
 
 on:
   push:
-    paths:
-      - '.github/workflows/regular-build.yml'
+    # paths:
+    #   - '.github/workflows/regular-build.yml'
     branches:
       - master
       - 'v[0-9]+.*' # release branch
