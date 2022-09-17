@@ -107,9 +107,9 @@ jobs:
       - name: check image 
         run: docker images
 
-  build_images:
-    name: Build image
-    runs-on: ubuntu-latest
+  # build_images:
+  #   name: Build image
+  #   runs-on: ubuntu-latest
 
   lint_go:
     name: Lint Golang
