@@ -69,20 +69,22 @@ jobs:
           # - compiler-family: clang
           #   compiler: "clang-9,clang++-9"
           #   os: ubuntu1804
-    container:
-      image: apache/pegasus:thirdparties-bin-${{ matrix.os }}-master
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock 
-        - /usr/bin/docker:/usr/bin/docker
+    # container:
+    #   image: apache/pegasus:thirdparties-bin-${{ matrix.os }}-master
+    #   volumes:
+    #     - /var/run/docker.sock:/var/run/docker.sock 
+    #     - /usr/bin/docker:/usr/bin/docker
     defaults:
       run:
         working-directory: /root/incubator-pegasus
     steps:
-      - name: find docker command 
-        run: |
-          /usr/bin/docker
+      # - name: find docker command 
+        # run: |
+      #     /usr/bin/docker
       - name: try to find images from docker 
         run: docker images
+      - name: exec to container 
+        run: docker run -it apache/pegasus:thirdparties-bin-${{ matrix.os }}-master
       - name: Clone Apache Pegasus Source
         working-directory: /root
         run: |
@@ -104,6 +106,10 @@ jobs:
         run: docker/pegasus-docker-compose/build_docker.sh .
       - name: check image 
         run: docker images
+
+  build_images:
+    name: Build image
+    runs-on: ubuntu-latest
 
   lint_go:
     name: Lint Golang
