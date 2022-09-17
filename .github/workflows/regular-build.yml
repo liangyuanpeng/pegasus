@@ -40,6 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: apache/pegasus:clang-format-3.9
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock 
+        - /usr/bin/docker:/usr/bin/docker
     steps:
       - uses: actions/checkout@v2
         with:
@@ -55,11 +58,11 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu1604
-          - ubuntu1804
+          # - ubuntu1604
+          # - ubuntu1804
           - ubuntu2004
-          - centos6
-          - centos7
+          # - centos6
+          # - centos7
         compiler-family:
           - gcc
         include:
