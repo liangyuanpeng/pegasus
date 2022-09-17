@@ -40,6 +40,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: find docker command 
+        run: which docker
       - name: Build
         run: |
           which docker
