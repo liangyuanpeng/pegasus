@@ -80,7 +80,7 @@ jobs:
     steps:
       - name: find docker command 
         run: |
-          which docker 
+          /usr/bin/docker
       - name: try to find images from docker 
         run: docker images
       - name: Clone Apache Pegasus Source
