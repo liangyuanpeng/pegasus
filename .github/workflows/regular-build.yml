@@ -88,7 +88,7 @@ jobs:
           docker run -it -d --name pegasus-thirdparties-bin-${{ matrix.os }} apache/pegasus:thirdparties-bin-${{ matrix.os }}-master
           docker cp pegasus-thirdparties-bin-${{ matrix.os }}:/root/thirdparties-bin.zip /tmp/thirdparties-bin.zip
       - name: Clone Apache Pegasus Source
-        working-directory: /root
+        # working-directory: /root
         run: |
           git clone -b master --depth=1 https://github.com/apache/incubator-pegasus.git
       - name: Unpack prebuilt third-parties
