@@ -100,7 +100,8 @@ jobs:
         if: ${{ matrix.compiler-family == 'gcc' }}
         run: |
           pwd
-          ./run.sh build -c --skip_thirdparty
+          ls
+          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh build -c --skip_thirdparty"
       - name: Compilation Pegasus on Clang
         if: ${{ matrix.compiler-family == 'clang' }}
         env:
@@ -112,6 +113,7 @@ jobs:
       - name: Packaging Server
         run: |
           docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
+          ls
       - name: Build docker image 
         if: matrix.os == 'ubuntu2004'
         run: docker/pegasus-docker-compose/build_docker.sh .
