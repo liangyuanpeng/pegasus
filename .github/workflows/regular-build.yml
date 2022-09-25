@@ -83,15 +83,17 @@ jobs:
       #     /usr/bin/docker
       - name: try to find images from docker 
         run: docker images
+      - name: checkout code 
+        run: actions/checkout@v2
       - name: exec to container 
         run: |
           docker run -it -d --name pegasus-thirdparties-bin-${{ matrix.os }} apache/pegasus:thirdparties-bin-${{ matrix.os }}-master
           docker cp pegasus-thirdparties-bin-${{ matrix.os }}:/root/thirdparties-bin.zip /tmp/thirdparties-bin.zip
-      - name: Clone Apache Pegasus Source
-        # working-directory: /root
-        run: |
-          git clone -b master --depth=1 https://github.com/apache/incubator-pegasus.git
-          pwd
+      # - name: Clone Apache Pegasus Source
+      #   # working-directory: /root
+      #   run: |
+      #     git clone -b master --depth=1 https://github.com/apache/incubator-pegasus.git
+      #     pwd
       - name: Unpack prebuilt third-parties
         run: unzip /tmp/thirdparties-bin.zip -d ./thirdparty
       - name: Compilation Pegasus on GCC
