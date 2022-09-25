@@ -91,6 +91,7 @@ jobs:
         # working-directory: /root
         run: |
           git clone -b master --depth=1 https://github.com/apache/incubator-pegasus.git
+          pwd
       - name: Unpack prebuilt third-parties
         run: unzip /tmp/thirdparties-bin.zip -d ./thirdparty
       - name: Compilation Pegasus on GCC
