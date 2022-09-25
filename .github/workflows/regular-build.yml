@@ -96,7 +96,9 @@ jobs:
         run: unzip /tmp/thirdparties-bin.zip -d ./thirdparty
       - name: Compilation Pegasus on GCC
         if: ${{ matrix.compiler-family == 'gcc' }}
-        run: ./run.sh build -c --skip_thirdparty
+        run: |
+          pwd
+          ./run.sh build -c --skip_thirdparty
       - name: Compilation Pegasus on Clang
         if: ${{ matrix.compiler-family == 'clang' }}
         env:
