@@ -109,9 +109,9 @@ jobs:
           pwd
           ls
           docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh build --test --compiler $COMPILER --skip_thirdparty -j $(nproc)"
-#          ./run.sh build --test --compiler $COMPILER --skip_thirdparty -j $(nproc)
       - name: Packaging Server
-        run: ./run.sh pack_server
+        run: |
+          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
       - name: Build docker image 
         if: matrix.os == 'ubuntu2004'
         run: docker/pegasus-docker-compose/build_docker.sh .
