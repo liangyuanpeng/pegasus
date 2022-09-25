@@ -105,6 +105,7 @@ jobs:
           COMPILER: ${{ matrix.compiler }}
         run: |
           pwd
+          ls
           ./run.sh build --test --compiler $COMPILER --skip_thirdparty -j $(nproc)
       - name: Packaging Server
         run: ./run.sh pack_server
