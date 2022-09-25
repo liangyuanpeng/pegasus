@@ -115,7 +115,7 @@ jobs:
           docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
           ls
       - name: Build docker image 
-        if: matrix.os == 'ubuntu2004'
+        if: matrix.os == 'ubuntu2004' && martix.compiler == 'clang-10' && matrix.compiler-family == 'gcc'
         run: docker/pegasus-docker-compose/build_docker.sh .
       - name: check image 
         run: docker images
