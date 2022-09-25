@@ -103,7 +103,9 @@ jobs:
         if: ${{ matrix.compiler-family == 'clang' }}
         env:
           COMPILER: ${{ matrix.compiler }}
-        run: ./run.sh build --test --compiler $COMPILER --skip_thirdparty -j $(nproc)
+        run: |
+          pwd
+          ./run.sh build --test --compiler $COMPILER --skip_thirdparty -j $(nproc)
       - name: Packaging Server
         run: ./run.sh pack_server
       - name: Build docker image 
