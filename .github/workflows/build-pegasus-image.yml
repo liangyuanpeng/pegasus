@@ -45,10 +45,10 @@ jobs:
       - name: Build
         run: |
           which docker
-          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh build -c"
-          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
-          ./docker/pegasus-docker-compose/build_docker.sh $PWD
-          docker tag pegasus:latest lypgcs/pegasus:master
-          docker images
-          docker push lypgcs/pegasus:master
-          docker logout
+#          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh build -c"
+#          docker run -v $PWD:/root/apache  apache/pegasus:build-env-ubuntu2004 /bin/bash -c "./run.sh pack_server"
+#          ./docker/pegasus-docker-compose/build_docker.sh $PWD
+#          docker tag pegasus:latest lypgcs/pegasus:master
+#          docker images
+#          docker push lypgcs/pegasus:master
+#          docker logout
