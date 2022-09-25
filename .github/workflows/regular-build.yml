@@ -84,7 +84,7 @@ jobs:
       - name: try to find images from docker 
         run: docker images
       - name: checkout code 
-        run: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: exec to container 
         run: |
           docker run -it -d --name pegasus-thirdparties-bin-${{ matrix.os }} apache/pegasus:thirdparties-bin-${{ matrix.os }}-master
