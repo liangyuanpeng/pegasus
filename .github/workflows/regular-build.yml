@@ -117,10 +117,10 @@ jobs:
       - name: Build docker image 
         if: ${{ matrix.os == 'ubuntu2004' && martix.compiler == 'clang-10' && matrix.compiler-family == 'gcc' }}
         run: docker/pegasus-docker-compose/build_docker.sh .
-      - name: check image 
-        run: docker images
       - name: tag docker image
         run: docker tag pegasus:latest pegasus-${{ matrix.os }}-${{ martix.compiler }}
+      - name: check image 
+        run: docker images
 
   # build_images:
   #   name: Build image
