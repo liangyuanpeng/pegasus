@@ -119,6 +119,8 @@ jobs:
         run: docker/pegasus-docker-compose/build_docker.sh .
       - name: check image 
         run: docker images
+      - name: tag docker image
+        run: docker tag pegasus:latest pegasus-${{ matrix.os }}-${{ martix.compiler }}
 
   # build_images:
   #   name: Build image
