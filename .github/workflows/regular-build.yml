@@ -120,7 +120,7 @@ jobs:
       - name: tag docker image
         env:
             COMPILER: ${{ matrix.compiler }}
-        run: docker tag pegasus:latest pegasus-${{ matrix.os }}-$COMPILER:latest
+        run: docker tag pegasus:latest pegasus-${{ matrix.os }}-${{ matrix.compiler-family }}:latest
       - name: check image 
         run: docker images
 
